@@ -8,8 +8,38 @@
   --max-width: 75vw;
   --black-tint-100: rgba(0, 0, 0, 0.1);
   --box-shadow: 0 0 6rem var(--black-tint-100);
+
+  /*tilføjer custom color-scheme*/
+  color-scheme: light dark;
+  --dark-color: hsl(0 0% 10%);
+  --light-color: hsl(0 0% 97%);
+  /*hue satuation light
+  rød i top 0+360
+  grøn 120
+  blå 240
+  */
 }
 
-body {
-  font-family: Helvetica, Arial, sans-serif;
+[data-dark="true"] {
+  color-scheme: dark;
 }
+
+[data-dark="false"] {
+  color-scheme: light;
+}
+
+html,
+input,
+textarea {
+  color: light-dark(var(--dark-color), var(--light-color));
+  background-color: light-dark(var(--light-color), var(--dark-color));
+}
+
+input,
+textarea {
+  border: 1px solid light-dark(var(--dark-color), var(--light-color));
+}
+
+/* ----------colorscheme  */
+/* form  */
+/* nav svært at læse  */
